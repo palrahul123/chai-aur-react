@@ -13,7 +13,7 @@ class AuthService {
 
   async CreateAccount({ email, password, name }) {
     try {
-      const userAccount = await this.Account.create(
+      const userAccount = await this.account.create(
         ID.unique(),
         email,
         password,

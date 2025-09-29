@@ -8,9 +8,10 @@ import authService from '../appwrite/auth'
 import {useForm} from 'react-hook-form'
 
 function Login() {
+   
     const navigate=useNavigate();
     const dispatch=useDispatch();
-    const {error,setError}=useState('');
+    const [error,setError]=useState('');
 
     const {register,handleSubmit}=useForm();
 
@@ -18,6 +19,7 @@ function Login() {
         console.log(data);
         setError("");
         try{
+            debugger;
                 const session = await authService.login(data)
                 if (session)
                 {
@@ -45,7 +47,7 @@ function Login() {
             <h2 className='text-center text-2xl font-bold leading-tight'>Sign into your Account</h2>
             <p className='mt-2 text-center text-base text-black/60'>
                 Don&apos;t have any account ? &nbsp;
-                <Link className='font-medium text-primary transition-all duration-200 hover:underline'>
+                <Link to="/signup" className='font-medium text-primary transition-all duration-200 hover:underline'>
                 Sign Up
                 </Link>
             </p>

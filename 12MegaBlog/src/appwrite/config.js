@@ -6,11 +6,11 @@ export class Service {
   databases;
   bucket;
   constructor() {
-    this.client
-      .SetEndPoint(conf.appwriteUrl)
-      .SetProject(conf.appwriteProjectId);
-    this.databases = new Databases(this.client);
-    this.bucket = new Storage(this.client);
+    this.Client.setEndpoint(conf.appwriteUrl).setProject(
+      conf.appwriteProjectId
+    );
+    this.databases = new Databases(this.Client);
+    this.bucket = new Storage(this.Client);
   }
 
   async createPost({ title, slug, content, featuredImage, status, userId }) {
@@ -51,7 +51,7 @@ export class Service {
     }
   }
 
-  async getPosts(queries = [Query.equal("status", "active")]) {
+  async getPosts(queries = [Query.equal("Status", "active")]) {
     try {
       return await this.databases.listDocuments(
         conf.appwriteDatabaseId,
